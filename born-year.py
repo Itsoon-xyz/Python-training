@@ -1,7 +1,10 @@
 import time
 
+
+allowedResponse = [f"y, yes , n, no"]
 answer = "y"
-while answer == "y":
+# calc = 2023
+while answer == "y" or "yes":
     try:
         year = int(input("Enter your age :"))
         if year <= 0:
@@ -13,11 +16,12 @@ while answer == "y":
 
     try:
         birth = str(input("You celebrated your birthday this year? (y/n) :"))
-        if birth == "y" or "n":
-            if birth == "y":
-                calc = 2023
-            else:
-                calc = 2022
+        for i in allowedResponse:
+            if birth in i:
+                if birth == "y" or "yes":
+                    calc = 2023
+                else:
+                    calc = 2022
     except:
         print("Jsp")
 
