@@ -1,10 +1,9 @@
 import time
 
 
-allowedResponse = [f"y, yes , n, no"]
+allowedResponse = ["y", "yes", "n", "no"]
 answer = "y"
-# calc = 2023
-while answer == "y" or "yes":
+while answer in ["y", "yes"]:
     try:
         year = int(input("Enter your age :"))
         if year <= 0:
@@ -15,20 +14,31 @@ while answer == "y" or "yes":
         continue
 
     try:
-        birth = str(input("You celebrated your birthday this year? (y/n) :"))
-        for i in allowedResponse:
-            if birth in i:
-                if birth == "y" or "yes":
+        validInput = False
+        while not validInput:
+            birth = str(
+                input("You celebrated your birthday this year? (y/n) :"))
+            if birth.lower() in allowedResponse:
+                if birth.lower() in ["y", "yes"]:
                     calc = 2023
                 else:
                     calc = 2022
+                validInput = True
+            else:
+                print("Invalid input. Please enter y, yes, n, or no.")
+
     except:
         print("Jsp")
 
     calc = calc - year
-    print("You are born on " + str(calc))
+    print("You are born on ", calc)
     time.sleep(0.5)
-    answer = str(input("You want restart? (y/n) :"))
-    if answer in "y" or "n":
-        if answer == "n":
-            print("Goodbye")
+    validInput = False
+    while not validInput:
+        answer = str(input("You want restart? (y/n) :"))
+        if answer.lower() in allowedResponse:
+            if answer not in ["y", "yes"]:
+                print("Goodbye")
+            validInput = True
+        else:
+            print("Invalid input. Please enter y, yes, n, or no.")
