@@ -1,34 +1,38 @@
-import time
-
-
-allowedResponse = [f"y, yes , n, no"]
+allowedResponse = ["y", "yes", "n", "no"]
 answer = "y"
-# calc = 2023
-while answer == "y" or "yes":
-    try:
-        year = int(input("Enter your age :"))
-        if year <= 0:
+validInput = False
+error = "Invalid input please enter only y, yes, n, no"
+
+while not validInput:
+    validInput = False
+    while not validInput:
+        year = input("Enter your age :")
+        if year.isnumeric():
+            validInput = True
+        else:
             print("Please enter only an integer number!!!")
-            continue
-    except:
-        print("Please enter only number!!!")
-        continue
 
-    try:
-        birth = str(input("You celebrated your birthday this year? (y/n) :"))
-        for i in allowedResponse:
-            if birth in i:
-                if birth == "y" or "yes":
-                    calc = 2023
-                else:
-                    calc = 2022
-    except:
-        print("Jsp")
+    validInput = False
+    while not validInput:
+        birth = str(input("Your birthday came this year? (y/n) :"))
+        if birth.lower() in allowedResponse:
+            if birth.lower() in ["y", "yes"]:
+                calc = 2023
+            else:
+                calc = 2022
+            validInput = True
+        else:
+            print(error)
 
-    calc = calc - year
-    print("You are born on " + str(calc))
-    time.sleep(0.5)
-    answer = str(input("You want restart? (y/n) :"))
-    if answer in "y" or "n":
-        if answer == "n":
-            print("Goodbye")
+    calc = calc - int(year)
+    print("You are born on ", calc)
+    validInput2 = False
+    while not validInput2:
+        answer = input("You want restart? (y/n) :")
+        if answer.lower() in allowedResponse:
+            if answer.lower() in ["y", "yes"]:
+                validInput = False
+                continue
+            else:
+                print("GoodBye")
+                break
