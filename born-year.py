@@ -8,6 +8,7 @@ while not validInput:
     while not validInput:
         year = input("Enter your age :")
         if year.isnumeric():
+            year = int(year)
             validInput = True
         else:
             print("Please enter only an integer number!!!")
@@ -37,6 +38,8 @@ while not validInput:
         if answer.lower() in allowedResponse:
             if answer not in ["y", "yes"]:
                 print("Goodbye")
-            validInput = True
+                validInput = True
+            else:
+                break
         else:
             print("Invalid input. Please enter y, yes, n, or no.")
