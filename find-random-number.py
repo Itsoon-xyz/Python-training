@@ -6,11 +6,20 @@ bestAttempt = 0
 allowedResponse = ["y", "yes", "n", "no"]
 
 
+def verifinput(n):
+    if n.isnumeric():
+        n = int(n)
+        return n
+    else:
+        print(False)
+
+
 validInput = False
 while not validInput:
-    print("The number is between 0 and 100.")
-    gnumber = random.randrange(0, 100)
-    print(gnumber)
+    n1 = verifinput(input("First number :"))
+    n2 = verifinput(input("Second number :"))
+    print(f"The number is between {n1} and {n2}.")
+    gnumber = random.randrange(n1, n2)
     win = False
     while not win:
         quest = False
