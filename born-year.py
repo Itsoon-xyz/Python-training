@@ -1,7 +1,7 @@
 allowedResponse = ["y", "yes", "n", "no"]
 answer = "y"
 validInput = False
-error = "Invalid input please enter only y, yes, n, no"
+error = "Invalid input. Please enter y, yes, n, or no."
 
 while not validInput:
     validInput = False
@@ -11,7 +11,7 @@ while not validInput:
             year = int(year)
             validInput = True
         else:
-            print("Please enter only an integer number!!!")
+            print("Invalid input. Please enter only an integer number!!!")
 
     try:
         validInput = False
@@ -25,7 +25,7 @@ while not validInput:
                     calc = 2022
                 validInput = True
             else:
-                print("Invalid input. Please enter y, yes, n, or no.")
+                print(error)
 
     except:
         print("Jsp")
@@ -42,4 +42,4 @@ while not validInput:
             else:
                 break
         else:
-            print("Invalid input. Please enter y, yes, n, or no.")
+            print(error)
